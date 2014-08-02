@@ -1,29 +1,65 @@
+var debug = require('debug')('menu');
+
+/**
+ * Parse global command line options.
+ */
 var opts = require('nopt')({
   'version': Boolean,
   'help': Boolean
 });
 
-// module.paths
-// module.parent.paths
+/**
+ *
+ */
 module.exports = function(package) {
-  // console.log(require(package));
-  // console.log(args);
-  // console.log(module.paths);
 
+  /**
+   * Require the parent module's package.json.
+   */
   var program = require(package);
 
-  function args(idx) {
-    return typeof idx === 'number'
-      ? opts.argv.cooked[idx]
-      : opts[idx];
+  /**
+   * Determine the subcommand to run.
+   */
+  var command = opts.argv.cooked[0];
+
+  /**
+   * The arguments to pass to the subcommand.
+   */
+  var args = opts.argv.original.slice(1);
+
+  /**
+   * The routine to find subcommands.
+   */
+  var find = require('./lib/find')(program);
+
+  /**
+   * The routine to execute subcommands.
+   */
+  var exec = require('./lib/exec')(program);
+
+  /**
+   * If the --version flag is set, run the 'version' subcommand.
+   */
+  if (opts.version) {
+    process.exit(require('./lib/version')(program));
   }
 
-  if (args('version')) {
-    console.log(program.version);
-    process.exit(0);
+  /**
+   * If the --help flag is set, print the help and exit.
+   */
+  if (opts.help || !command) {
+    process.exit(require('./lib/help')(program));
   }
-  if (args('help') || args(0) === 'help' || !args(0)) {
-    console.log('usage: %s [--version] [--help]', program.name);
-    process.exit(0);
-  }
+
+  debug('program=%s', program.name);
+  debug('command=%s', command);
+
+  find(command, function(err, cmds) {
+    if (cmds.length) {
+      exec(cmds[0], args);
+    } else {
+      throw 'CANT FIND THAT COMMAND';
+    }
+  });
 };

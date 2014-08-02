@@ -7,11 +7,12 @@ Write command-line apps the npm way.
 
 Features:
 
-- [ ] find commands in directory
 - [ ] find commands in `PATH`
-- [ ] find commands in `NODE_PATH`
+- [ ] find commands in directory?
+- [ ] find commands in `NODE_PATH`?
 - [ ] list commands
 - [ ] help command
 - [x] version command
 - [ ] rc file support?
 - [ ] man pages support?
+- [ ] colors!

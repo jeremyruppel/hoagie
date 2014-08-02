@@ -5,6 +5,7 @@ describe('version', function() {
     nixt()
       .cwd('examples/yell')
       .stdout('1.2.3')
+      .code(0)
       .run('node index.js --version', done);
   });
 });

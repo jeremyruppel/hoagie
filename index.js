@@ -1,5 +1,6 @@
-var args = require('nopt')({
-  'version': Boolean
+var opts = require('nopt')({
+  'version': Boolean,
+  'help': Boolean
 });
 
 // module.paths
@@ -11,8 +12,18 @@ module.exports = function(package) {
 
   var program = require(package);
 
-  if (args.version) {
+  function args(idx) {
+    return typeof idx === 'number'
+      ? opts.argv.cooked[idx]
+      : opts[idx];
+  }
+
+  if (args('version')) {
     console.log(program.version);
+    process.exit(0);
+  }
+  if (args('help') || args(0) === 'help' || !args(0)) {
+    console.log('usage: %s [--version] [--help]', program.name);
     process.exit(0);
   }
 };

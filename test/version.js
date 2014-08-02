@@ -1,0 +1,10 @@
+var nixt = require('nixt');
+
+describe('version', function() {
+  it('prints the version from package.json', function(done) {
+    nixt()
+      .cwd('examples/yell')
+      .stdout('1.2.3')
+      .run('node index.js --version', done);
+  });
+});

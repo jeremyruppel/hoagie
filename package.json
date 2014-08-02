@@ -4,7 +4,7 @@
   "description": "Simple organization for command-line applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "cli",
@@ -15,5 +15,12 @@
     "argv"
   ],
   "author": "Jeremy Ruppel",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^1.21.3",
+    "nixt": "^0.4.0"
+  },
+  "dependencies": {
+    "nopt": "^3.0.1"
+  }
 }

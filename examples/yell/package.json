@@ -1,0 +1,11 @@
+{
+  "name": "yell",
+  "version": "1.2.3",
+  "description": "Say things louder",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "Jeremy Ruppel",
+  "license": "ISC",
+  "private": true
+}

@@ -1,0 +1,19 @@
+{
+  "name": "menu",
+  "version": "0.0.0",
+  "description": "Simple organization for command-line applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "command",
+    "line",
+    "subcommand",
+    "sub",
+    "argv"
+  ],
+  "author": "Jeremy Ruppel",
+  "license": "ISC"
+}

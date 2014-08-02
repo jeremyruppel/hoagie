@@ -21,7 +21,7 @@ module.exports = function(package) {
   /**
    * Determine the subcommand to run.
    */
-  var command = opts.argv.cooked[0];
+  var command = opts.argv.remain[0];
 
   /**
    * The arguments to pass to the subcommand.
@@ -39,7 +39,7 @@ module.exports = function(package) {
   var exec = require('./lib/exec')(program);
 
   /**
-   * If the --version flag is set, run the 'version' subcommand.
+   * If the --version flag is set, print the version and exit.
    */
   if (opts.version) {
     process.exit(require('./lib/version')(program));
@@ -48,8 +48,17 @@ module.exports = function(package) {
   /**
    * If the --help flag is set, print the help and exit.
    */
-  if (opts.help || !command) {
+  if (!command || (!command && opts.help)) {
     process.exit(require('./lib/help')(program));
+  }
+
+  /**
+   * If the 'help' command is run, swap the first argument
+   * for the command name and run it with --help.
+   */
+  if (command === 'help') {
+    command = args[0];
+    args[0] = '--help';
   }
 
   debug('program=%s', program.name);

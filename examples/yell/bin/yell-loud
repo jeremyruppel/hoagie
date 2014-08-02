@@ -1,3 +1,6 @@
 #!/usr/bin/env node
 
+if (process.argv[2] == '--help') {
+  return console.log('usage: yell loud');
+}
 console.log('%s!', process.argv[2].toUpperCase());

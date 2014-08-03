@@ -20,7 +20,7 @@
 
 ## License
 
-[MIT License][LICENSE]
+[ISC License][LICENSE]
 
 [1]: https://github.com/basecamp/sub
 [npm]: http://badge.fury.io/js/hoagie

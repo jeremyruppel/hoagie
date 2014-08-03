@@ -1,19 +1,27 @@
 var nixt = require('nixt');
 
 describe('help', function() {
+  var output = 'usage: yell [command] [--version] [--help]'
+             + '   curse  usage here'
+             + '   loud   usage here';
+
   it('prints usage information', function(done) {
-    nixt()
-      .cwd('examples/yell')
+    nixt({
+      colors: false,
+      newlines: false,
+    }).cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout('usage: yell [--version] [--help]')
+      .stdout(output)
       .code(0)
       .run('node index.js --help', done);
   });
   it('is the default command', function(done) {
-    nixt()
-      .cwd('examples/yell')
+    nixt({
+      colors: false,
+      newlines: false,
+    }).cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout('usage: yell [--version] [--help]')
+      .stdout(output)
       .code(0)
       .run('node index.js', done);
   });

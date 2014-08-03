@@ -42,14 +42,14 @@ module.exports = function(package) {
    * If the --version flag is set, print the version and exit.
    */
   if (opts.version) {
-    process.exit(require('./lib/version')(program));
+    return require('./lib/version')(program);
   }
 
   /**
    * If the --help flag is set, print the help and exit.
    */
   if (!command || (!command && opts.help)) {
-    process.exit(require('./lib/help')(program));
+    return require('./lib/help')(program);
   }
 
   /**

@@ -22,10 +22,12 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "chalk": "^0.5.1",
     "debug": "^1.0.4",
     "flatten": "0.0.1",
     "glob": "^4.0.5",
     "nopt": "^3.0.1",
+    "text-table": "^0.2.0",
     "uniq": "^1.0.1"
   }
 }

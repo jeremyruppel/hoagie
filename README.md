@@ -10,10 +10,10 @@ Features:
 - [x] find commands in `PATH`
 - [ ] find commands in directory?
 - [ ] find commands in `NODE_PATH`?
-- [ ] list commands
+- [x] list commands
 - [x] help command
 - [x] version command
 - [ ] rc file support?
 - [ ] man pages support?
-- [ ] colors!
+- [x] colors!
 - [ ] suggest commands like git

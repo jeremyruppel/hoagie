@@ -8,8 +8,6 @@ Write command-line apps the npm way.
 Features:
 
 - [x] find commands in `PATH`
-- [ ] find commands in directory?
-- [ ] find commands in `NODE_PATH`?
 - [x] list commands
 - [x] help command
 - [x] version command

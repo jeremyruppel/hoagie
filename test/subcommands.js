@@ -14,7 +14,6 @@ describe('subcommands', function() {
       .code(0)
       .run('node index.js curse ohai', done);
   });
-  it('provides environment variables');
   it('suggests similar commands', function(done) {
     this.example
       .stderr(fixture('yell/suggest.txt'))

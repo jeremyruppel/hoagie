@@ -1,3 +1,4 @@
 usage: yell [command] [--version] [--help]
    curse  usage here
+   env    usage here
    loud   usage here

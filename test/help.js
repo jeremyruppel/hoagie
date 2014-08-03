@@ -1,27 +1,22 @@
 var nixt = require('nixt');
+var fixture = require('./fixtures');
 
 describe('help', function() {
-  var output = 'usage: yell [command] [--version] [--help]'
-             + '   curse  usage here'
-             + '   loud   usage here';
-
   it('prints usage information', function(done) {
     nixt({
-      colors: false,
-      newlines: false,
+      colors: false
     }).cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout(output)
+      .stdout(fixture('yell/help.txt'))
       .code(0)
       .run('node index.js --help', done);
   });
   it('is the default command', function(done) {
     nixt({
-      colors: false,
-      newlines: false,
+      colors: false
     }).cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout(output)
+      .stdout(fixture('yell/help.txt'))
       .code(0)
       .run('node index.js', done);
   });
@@ -29,7 +24,7 @@ describe('help', function() {
     nixt()
       .cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout('usage: yell loud')
+      .stdout(fixture('yell/help-loud.txt'))
       .code(0)
       .run('node index.js loud --help', done);
   });
@@ -37,7 +32,7 @@ describe('help', function() {
     nixt()
       .cwd('examples/yell')
       .path('examples/yell/bin')
-      .stdout('usage: yell loud')
+      .stdout(fixture('yell/help-loud.txt'))
       .code(0)
       .run('node index.js help loud', done);
   });

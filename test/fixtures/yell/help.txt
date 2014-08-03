@@ -1,0 +1,3 @@
+usage: yell [command] [--version] [--help]
+   curse  usage here
+   loud   usage here

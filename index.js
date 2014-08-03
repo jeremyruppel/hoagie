@@ -65,10 +65,11 @@ module.exports = function(package) {
   debug('command=%s', command);
 
   find(command, function(err, cmds) {
-    if (cmds.length) {
-      exec(cmds[0], args);
+    var cmd = cmds[0];
+    if (cmd) {
+      exec(cmd, args);
     } else {
-      throw 'CANT FIND THAT COMMAND';
+      suggest(cmd);
     }
   });
 };

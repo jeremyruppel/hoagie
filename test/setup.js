@@ -1,4 +1,5 @@
 var nixt = require('nixt');
+var fs = require('fs');
 
 /**
  * Appends `dir` to the world's PATH

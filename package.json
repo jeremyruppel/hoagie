@@ -1,13 +1,14 @@
 {
-  "name": "menu",
+  "name": "hoagie",
   "version": "0.0.0",
-  "description": "Simple organization for command-line applications",
+  "description": "Sub-like organization for command-line applications",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
     "cli",
+    "git",
     "command",
     "line",
     "subcommand",

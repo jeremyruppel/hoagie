@@ -1,4 +1,4 @@
-var debug = require('debug')('menu');
+var debug = require('debug')('hoagie');
 
 /**
  * Parse global command line options.

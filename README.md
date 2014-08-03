@@ -1,6 +1,9 @@
 # hoagie
 
-**hoagie** provides a nice way to organize your command-line applications into subcommands. Hoagie leverages npm to greatly simplify the creation of git-style subcommand apps, like 37signals' [sub]. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
+> [![NPM version][npm-badge]][npm]
+> [![Build Status][travis-badge]][travis-ci]
+
+**hoagie** provides a nice way to organize your command-line applications into subcommands. Hoagie leverages npm to greatly simplify the creation of git-style subcommand apps, like 37signals' [sub][1]. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
 
 **Features:**
 
@@ -15,4 +18,13 @@
 - [x] colors!
 - [x] suggest commands like git
 
+## License
+
+[MIT License][LICENSE]
+
 [1]: https://github.com/basecamp/sub
+[npm]: http://badge.fury.io/js/hoagie
+[npm-badge]: https://badge.fury.io/js/hoagie.svg
+[travis-ci]: https://travis-ci.org/jeremyruppel/hoagie
+[travis-badge]: https://travis-ci.org/jeremyruppel/hoagie.svg?branch=master
+[LICENSE]: https://github.com/jeremyruppel/hoagie/blob/master/LICENSE

@@ -16,6 +16,10 @@
     "argv"
   ],
   "author": "Jeremy Ruppel",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jeremyruppel/hoagie.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "mocha": "^1.21.3",

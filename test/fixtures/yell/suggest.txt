@@ -1,0 +1,4 @@
+yell: 'course' is not a yell command. See 'yell --help'.
+
+Did you mean this?
+  curse

@@ -11,3 +11,10 @@ nixt.register('path', function(dir) {
   return this.env('PATH',
     path.join(process.cwd(), dir) + path.delimiter + PATH);
 });
+
+beforeEach(function() {
+  this.example = nixt({
+    colors: false
+  }).cwd('examples/yell')
+    .path('examples/yell/bin');
+});

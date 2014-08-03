@@ -39,6 +39,11 @@ module.exports = function(package) {
   var exec = require('./lib/exec')(program);
 
   /**
+   * The routine to suggest subcommands.
+   */
+  var suggest = require('./lib/suggest')(program);
+
+  /**
    * If the --version flag is set, print the version and exit.
    */
   if (opts.version) {
@@ -69,7 +74,7 @@ module.exports = function(package) {
     if (cmd) {
       exec(cmd, args);
     } else {
-      suggest(cmd);
+      suggest(command);
     }
   });
 };

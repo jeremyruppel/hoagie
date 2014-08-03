@@ -16,4 +16,4 @@ Features:
 - [ ] rc file support?
 - [ ] man pages support?
 - [x] colors!
-- [ ] suggest commands like git
+- [x] suggest commands like git

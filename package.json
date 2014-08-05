@@ -31,7 +31,9 @@
     "debug": "^1.0.4",
     "didyoumean": "^1.2.0",
     "flatten": "0.0.1",
+    "from-source": "^1.0.0",
     "glob": "^4.0.5",
+    "merge-stream": "^0.1.5",
     "nopt": "^3.0.1",
     "text-table": "^0.2.0",
     "uniq": "^1.0.1"

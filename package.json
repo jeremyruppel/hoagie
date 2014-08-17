@@ -29,14 +29,16 @@
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^0.5.1",
+    "columnify": "^1.2.1",
     "debug": "^1.0.4",
     "didyoumean": "^1.2.0",
+    "ejs": "^1.0.0",
     "flatten": "0.0.1",
-    "from-source": "^1.0.0",
     "glob": "^4.0.5",
-    "merge-stream": "^0.1.5",
+    "map-stream": "^0.1.0",
     "nopt": "^3.0.1",
-    "text-table": "^0.2.0",
+    "pathmap": "^1.2.0",
+    "stream-reduce": "^1.0.3",
     "uniq": "^1.0.1"
   }
 }

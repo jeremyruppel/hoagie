@@ -2,33 +2,19 @@ var subject = require('../lib/which');
 var assert = require('assert');
 
 describe('which', function() {
-  it('emits files in the paths that match the pattern', function(done) {
-    var files = [];
-
-    subject('which.js', [
+  it('returns files in the paths that match the pattern', function() {
+    assert.deepEqual(subject('which.js', [
       __dirname
-    ]).on('data', function(file) {
-      files.push(file);
-    }).on('end', function() {
-      assert.deepEqual(files, [
-        __filename
-      ]);
-      done();
-    });
+    ]), [
+      __dirname + '/which.js'
+    ]);
   });
-  it('emits files in the paths that match a glob', function(done) {
-    var files = [];
-
-    subject('s*', [
+  it('returns files in the paths that match a glob', function() {
+    assert.deepEqual(subject('s*', [
       __dirname
-    ]).on('data', function(file) {
-      files.push(file);
-    }).on('end', function() {
-      assert.deepEqual(files, [
-        __dirname + '/setup.js',
-        __dirname + '/subcommands.js'
-      ]);
-      done();
-    });
+    ]), [
+      __dirname + '/setup.js',
+      __dirname + '/subcommands.js'
+    ]);
   });
 });

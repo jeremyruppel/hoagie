@@ -38,7 +38,6 @@
     "map-stream": "^0.1.0",
     "nopt": "^3.0.1",
     "pathmap": "^1.2.0",
-    "stream-reduce": "^1.0.3",
     "uniq": "^1.0.1"
   }
 }

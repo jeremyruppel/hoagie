@@ -13,8 +13,7 @@ describe('which', function() {
     assert.deepEqual(subject('s*', [
       __dirname
     ]), [
-      __dirname + '/setup.js',
-      __dirname + '/subcommands.js'
+      __dirname + '/setup.js'
     ]);
   });
 });

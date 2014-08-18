@@ -1,7 +1,7 @@
 {
-  "name": "yell",
+  "name": "hoagie",
   "version": "1.2.3",
-  "description": "Say things louder",
+  "description": "An example application",
   "main": "index.js",
   "scripts": {
   },

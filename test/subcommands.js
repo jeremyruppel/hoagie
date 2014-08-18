@@ -6,19 +6,19 @@ describe('subcommands', function() {
     this.example
       .stdout('OHAI!')
       .code(0)
-      .run('node index.js loud ohai', done);
+      .run('node index.js subcommand ohai', done);
   });
   it('executes the file in its own environment', function(done) {
     this.example
       .stdout('####!')
       .code(0)
-      .run('node index.js curse ohai', done);
+      .run('node index.js bash ohai', done);
   });
   it('suggests similar commands', function(done) {
     this.example
-      .stderr(fixture('yell/suggest.txt'))
+      .stderr(fixture('suggest.txt'))
       .code(1)
-      .run('node index.js course')
+      .run('node index.js bah')
       .end(done);
   });
 });

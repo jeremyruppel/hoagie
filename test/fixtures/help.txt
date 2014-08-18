@@ -1,0 +1,4 @@
+usage: hoagie [command] [--version] [--help]
+   bash        usage here
+   env         usage here
+   subcommand  usage here

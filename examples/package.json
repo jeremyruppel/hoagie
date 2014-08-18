@@ -5,9 +5,6 @@
   "main": "index.js",
   "scripts": {
   },
-  "directories": {
-    "bin": "./bin"
-  },
   "author": "Jeremy Ruppel",
   "license": "ISC",
   "private": true

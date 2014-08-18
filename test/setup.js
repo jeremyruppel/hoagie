@@ -16,8 +16,7 @@ nixt.register('path', function(dir) {
 beforeEach(function() {
   this.example = nixt({
     colors: false
-  }).cwd('examples/yell')
-    .path('examples/yell/bin');
+  }).cwd('examples').path('examples');
 });
 
 /**

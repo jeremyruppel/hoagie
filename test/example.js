@@ -2,60 +2,67 @@ var fixture = require('./fixtures');
 var nixt = require('nixt');
 
 describe('example', function() {
+  var example;
+
+  beforeEach(function() {
+    example = nixt({
+      colors: false
+    }).cwd('example').base('node index.js ');
+  });
   describe('version', function() {
     it('prints the version from package.json', function(done) {
-      this.example
+      example
         .stdout('1.2.3')
         .code(0)
-        .run('node index.js --version', done);
+        .run('--version', done);
     });
   });
   describe('help', function() {
     it('prints usage information', function(done) {
-      this.example
+      example
         .stdout(fixture('help.txt'))
         .code(0)
-        .run('node index.js --help', done);
+        .run('--help', done);
     });
     it('is the default command', function(done) {
-      this.example
+      example
         .stdout(fixture('help.txt'))
         .code(0)
-        .run('node index.js', done);
+        .run('', done);
     });
     it('runs the subcommand help', function(done) {
-      this.example
+      example
         .stdout(fixture('subcommand.txt'))
         .code(0)
-        .run('node index.js subcommand --help', done);
+        .run('subcommand --help', done);
     });
     it('delegates to subcommands help', function(done) {
-      this.example
+      example
         .stdout(fixture('subcommand.txt'))
         .code(0)
-        .run('node index.js help subcommand', done);
+        .run('help subcommand', done);
     });
   });
   describe('exec', function() {
     it('executes a subcommand', function(done) {
-      this.example
+      example
         .stdout('OHAI!')
         .code(0)
-        .run('node index.js subcommand ohai', done);
+        .run('subcommand ohai', done);
     });
     it('executes the file in its own environment', function(done) {
-      this.example
+      example
         .stdout('####!')
         .code(0)
-        .run('node index.js bash ohai', done);
+        .run('bash ohai', done);
     });
   });
   describe('suggest', function() {
     it('suggests a command', function(done) {
-      this.example
+      example
         .stderr(fixture('suggest.txt'))
         .code(1)
-        .run('node index.js bah')
+        .run('bah')
         .end(done);
     });
   });

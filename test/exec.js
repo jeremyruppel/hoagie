@@ -13,7 +13,7 @@ describe('exec', function() {
   });
   it('spawns a child process for the given command', function(done) {
     req.command = 'echo';
-    req.args    = ['OK'];
+    req.args = ['OK'];
 
     subject(req, function(err, cp) {
       assert.ifError(err);
@@ -31,8 +31,8 @@ describe('exec', function() {
   });
   it('exports HOAGIE_NAME', function(done) {
     req.package.name = 'foo';
-    req.command = 'bash';
-    req.args    = ['-c', 'echo $HOAGIE_NAME'];
+    req.command = 'printenv';
+    req.args = ['HOAGIE_NAME'];
 
     subject(req, function(err, cp) {
       assert.ifError(err);
@@ -41,8 +41,8 @@ describe('exec', function() {
   });
   it('exports $HOAGIE_VERSION', function(done) {
     req.package.version = '1.2.3';
-    req.command = 'bash';
-    req.args    = ['-c', 'echo $HOAGIE_VERSION'];
+    req.command = 'printenv';
+    req.args = ['HOAGIE_VERSION'];
 
     subject(req, function(err, cp) {
       assert.ifError(err);
@@ -50,12 +50,12 @@ describe('exec', function() {
     });
   });
   it('exports $HOAGIE_COMMAND', function(done) {
-    req.command = 'bash';
-    req.args    = ['-c', 'echo $HOAGIE_COMMAND'];
+    req.command = 'printenv';
+    req.args = ['HOAGIE_COMMAND'];
 
     subject(req, function(err, cp) {
       assert.ifError(err);
-      assert.data(cp.stdout, 'bash\n', done);
+      assert.data(cp.stdout, 'printenv\n', done);
     });
   });
 });

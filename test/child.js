@@ -1,6 +1,8 @@
 var subject = require('../lib/child');
 var assert = require('assert');
 
+/* global describe, it */
+
 describe('child', function() {
   var events = require('events');
   var stream = require('stream');

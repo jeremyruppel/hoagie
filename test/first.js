@@ -2,6 +2,8 @@ var subject = require('../lib/first');
 var assert = require('assert');
 var sinon = require('sinon');
 
+/* global describe, it */
+
 describe('first', function() {
   it('yields the first truthy result', function(done) {
     var obj = 'obj';
@@ -16,7 +18,7 @@ describe('first', function() {
       sinon.assert.calledWith(fns[0], obj, sinon.match.func);
       sinon.assert.calledOnce(fns[1]);
       sinon.assert.calledWith(fns[1], obj, sinon.match.func);
-      sinon.assert.notCalled(fns[2], 0)
+      sinon.assert.notCalled(fns[2], 0);
       done(err);
     });
   });
@@ -27,13 +29,13 @@ describe('first', function() {
       sinon.stub().yieldsAsync('err'),
       sinon.stub().yieldsAsync()
     ];
-    subject(fns, obj, function(err, val) {
+    subject(fns, obj, function(err) {
       assert.equal(err, 'err');
       sinon.assert.calledOnce(fns[0]);
       sinon.assert.calledWith(fns[0], obj, sinon.match.func);
       sinon.assert.calledOnce(fns[1]);
       sinon.assert.calledWith(fns[1], obj, sinon.match.func);
-      sinon.assert.notCalled(fns[2], 0)
+      sinon.assert.notCalled(fns[2], 0);
       done();
     });
   });
@@ -44,7 +46,7 @@ describe('first', function() {
       sinon.stub().yieldsAsync(),
       sinon.stub().yieldsAsync()
     ];
-    subject(fns, obj, function(err, val) {
+    subject(fns, obj, function(err) {
       assert.equal(err.message, 'No functions yielded');
       sinon.assert.calledOnce(fns[0]);
       sinon.assert.calledWith(fns[0], obj, sinon.match.func);
@@ -62,7 +64,7 @@ describe('first', function() {
       sinon.stub().yieldsAsync(),
       sinon.stub().yieldsAsync()
     ];
-    subject(fns, obj, function(err, val) {
+    subject(fns, obj, function() {
       sinon.assert.callOrder(fns[0], fns[1], fns[2]);
       done();
     });

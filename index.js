@@ -4,7 +4,6 @@ var version = require('./lib/version');
 var help = require('./lib/help');
 var exec = require('./lib/exec');
 var suggest = require('./lib/suggest');
-var debug = require('debug')('hoagie');
 
 /**
  *
@@ -23,7 +22,7 @@ module.exports = function(package) {
   function attach(cp) {
     cp.stdout.pipe(process.stdout);
     cp.stderr.pipe(process.stderr);
-    cp.on('exit', function(code, signal) {
+    cp.on('exit', function(code /*, signal */) {
       process.exit(code);
     });
   }

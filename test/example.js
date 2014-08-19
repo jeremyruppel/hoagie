@@ -1,6 +1,8 @@
 var fixture = require('./fixtures');
 var nixt = require('nixt');
 
+/* global describe, it, beforeEach */
+
 describe('example', function() {
   var example;
 

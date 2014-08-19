@@ -2,7 +2,7 @@
 softWrap = false
 softTabs = true
 tabSize  = 2
-include  = "{$include,.jscsrc,.gitignore,.travis.yml}"
+include  = "{$include,.jscsrc,.jshintrc,.jshintignore,.gitignore,.travis.yml}"
 
 [ text.html.markdown ]
 softWrap = true

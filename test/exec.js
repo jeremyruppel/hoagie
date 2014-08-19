@@ -1,6 +1,8 @@
 var subject = require('../lib/exec');
 var assert = require('assert');
 
+/* global describe, it, beforeEach */
+
 describe('exec', function() {
   var req;
 

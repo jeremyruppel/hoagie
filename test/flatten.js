@@ -1,6 +1,8 @@
 var subject = require('../lib/flatten');
 var assert = require('assert');
 
+/* global describe, it */
+
 describe('flatten', function() {
   it('does not modify the first order array', function() {
     assert.deepEqual(subject([1, 2, 3]), [1, 2, 3]);

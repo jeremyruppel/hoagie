@@ -29,7 +29,6 @@
     "sinon": "^1.10.3"
   },
   "dependencies": {
-    "async": "^0.9.0",
     "chalk": "^0.5.1",
     "columnify": "^1.2.1",
     "didyoumean": "^1.2.0",

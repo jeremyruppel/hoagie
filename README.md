@@ -3,7 +3,7 @@
 > [![NPM version][npm-badge]][npm]
 > [![Build Status][travis-badge]][travis-ci]
 
-**hoagie** provides a nice way to organize your command-line applications into subcommands. Hoagie leverages npm to greatly simplify the creation of git-style subcommand apps, like 37signals' [sub][1]. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
+**hoagie** provides a nice way to organize your command-line applications into subcommands. Hoagie leverages node and npm to greatly simplify the creation of git-style subcommand apps, like 37signals' [sub][1]. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
 
 **Features:**
 
@@ -24,11 +24,17 @@
 
 ## Usage
 
-Inside your `index.js` (or whatever your `$npm_package-main` is), simply require hoagie and give it your package.json.
+Inside your `index.js` (or whatever your `$npm_package_main` is), simply require hoagie and give it your package.json.
 
 ``` js
 require('hoagie')(require('./package'));
 ```
+
+Your application's package.json is expected to have the following properties:
+
+- `name` - your application's name.
+- `description` - a short description of your application.
+- `subcommands` - short descriptions of known subcommands.
 
 ## License
 

@@ -1,4 +1,4 @@
 usage: hoagie [command] [--version] [--help]
-   bash        usage here
-   env         usage here
-   subcommand  usage here
+   bash        test that bash scripts run
+   env         print environment variables
+   subcommand  run a subcommand

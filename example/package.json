@@ -5,6 +5,11 @@
   "main": "index.js",
   "scripts": {
   },
+  "subcommands": {
+    "bash": "test that bash scripts run",
+    "env": "print environment variables",
+    "subcommand": "run a subcommand"
+  },
   "author": "Jeremy Ruppel",
   "license": "ISC",
   "private": true

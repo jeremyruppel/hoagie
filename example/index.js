@@ -8,6 +8,6 @@ process.env.PATH = __dirname + ':' + process.env.PATH;
 
 /**
  * To create an application, simply require('hoagie') and pass
- * it the path to your package.json.
+ * it your package.json.
  */
-require('..')(__dirname + '/package.json');
+require('..')(require('./package.json'));

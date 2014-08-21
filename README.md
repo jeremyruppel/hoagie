@@ -18,6 +18,18 @@
 - [x] colors!
 - [x] suggest commands like git
 
+## Install
+
+`$ npm install hoagie --save`
+
+## Usage
+
+Inside your `index.js` (or whatever your `$npm_package-main` is), simply require hoagie and give it your package.json.
+
+``` js
+require('hoagie')(require('./package'));
+```
+
 ## License
 
 [ISC License][LICENSE]

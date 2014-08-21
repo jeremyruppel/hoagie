@@ -36,6 +36,22 @@ Your application's package.json is expected to have the following properties:
 - `description` - a short description of your application.
 - `subcommands` - short descriptions of known subcommands.
 
+## Creating subcommands
+
+**hoagie** searches your `PATH` for available subcommands. Subcommand files must be executable and must be prefixed with your application's name. For example, if your application is named `calc`, an executable file named `calc-foo` in your `PATH` will be invoked when you run `calc foo`.
+
+> An easy way to get executable files into your `PATH` is to leverage npm's `bin` property.
+
+**hoagie** does not put any restriction on what language you write your subcommands in. Use bash, ruby, python, perl, anything that your system supports. This also means that **hoagie** does not provide an option parser for your subcommand. **hoagie** will pass on any leftover flags and arguments to your subcommand and you can parse them however you wish.
+
+### Subcommand descriptions
+
+**hoagie** will look in your application's package.json for a `subcommands` hash. The keys of this hash should be known subcommand names and the values should be the help text for each subcommand you would like to be displayed.
+
+### Subcommand help
+
+Subcommands are expected to handle the `--help` flag. When a user runs `calc help foo`, **hoagie** will invoke `calc foo --help` so that your program can display whatever help text you'd like.
+
 ## License
 
 [ISC License][LICENSE]

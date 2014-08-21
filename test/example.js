@@ -14,7 +14,7 @@ describe('example', function() {
   describe('version', function() {
     it('prints the version from package.json', function(done) {
       example
-        .stdout('1.2.3')
+        .stdout(fixture('version.txt'))
         .code(0)
         .run('--version', done);
     });

@@ -1,4 +1,8 @@
-usage: hoagie [command] [--version] [--help]
+Usage: hoagie <command> [--version] [--help]
+
+Where <command> is one of the following:
    bash        test that bash scripts run
    env         print environment variables
    subcommand  run a subcommand
+
+See 'hoagie help <command>' for help with a specific subcommand.

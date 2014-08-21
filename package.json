@@ -1,6 +1,6 @@
 {
   "name": "hoagie",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Sub-like organization for command-line applications",
   "main": "index.js",
   "scripts": {

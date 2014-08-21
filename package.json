@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "chalk": "^0.5.1",
-    "columnify": "^1.2.1",
     "didyoumean": "^1.2.0",
     "ejs": "^1.0.0",
     "glob": "^4.0.5",

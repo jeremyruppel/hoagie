@@ -65,7 +65,7 @@ describe('example', function() {
     });
     it('executes the file in its own environment', function(done) {
       example
-        .stdout('####!')
+        .stdout('Hello from bash!')
         .code(0)
         .run('bash ohai', done);
     });

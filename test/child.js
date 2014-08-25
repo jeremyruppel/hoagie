@@ -11,6 +11,10 @@ describe('child', function() {
     assert.ok(subject() instanceof events.EventEmitter,
       'Expected an EventEmitter');
   });
+  it('has a stdin stream', function() {
+    assert.ok(subject().stdin instanceof stream.PassThrough,
+      'Expected a stream.PassThrough');
+  });
   it('has a stdout stream', function() {
     assert.ok(subject().stdout instanceof stream.PassThrough,
       'Expected a stream.PassThrough');

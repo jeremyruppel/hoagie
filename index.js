@@ -33,6 +33,7 @@ module.exports = function(package) {
    * with the same status code.
    */
   function attach(cp) {
+    process.stdin.pipe(cp.stdin);
     cp.stdout.pipe(process.stdout);
     cp.stderr.pipe(process.stderr);
     cp.on('exit', function(code /*, signal */) {

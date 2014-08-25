@@ -3,3 +3,4 @@ hoagie: 'bah' is not a hoagie command. See 'hoagie --help'.
 Did you mean one of these?
    bash
    env
+   read

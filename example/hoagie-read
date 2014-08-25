@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "stdin works too, try it!"
+read INPUT
+echo "INPUT: $INPUT"

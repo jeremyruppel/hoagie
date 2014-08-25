@@ -10,13 +10,14 @@
 - [x] language agnostic
 - [x] argv parser agnostic
 - [x] find commands in `PATH`
-- [x] list commands
+- [x] list subcommands
 - [x] help command
 - [x] version command
-- [ ] rc file support?
-- [ ] man pages support?
 - [x] colors!
 - [x] suggest commands like git
+- [ ] man pages support?
+- [ ] rc file support?
+- [ ] subcommand completion?
 
 ## Install
 
@@ -24,9 +25,10 @@
 
 ## Usage
 
-Inside your `index.js` (or whatever your `$npm_package_main` is), simply require hoagie and give it your package.json.
+Inside your `index.js` (or whatever your `$npm_package_main` is), simply require hoagie and give it your *parsed* package.json.
 
 ``` js
+// index.js
 require('hoagie')(require('./package'));
 ```
 
@@ -35,6 +37,20 @@ Your application's package.json is expected to have the following properties:
 - `name` - your application's name.
 - `description` - a short description of your application.
 - `subcommands` - short descriptions of known subcommands.
+
+### version
+
+**hoagie** supports the `--version` flag out of the box and will print your program's version according to the `version` key in your package.json.
+
+### help
+
+**hoagie** automatically prints help information when you invoke your program with any of the following:
+
+- no subcommand or arguments
+- the `--help` flag and no subcommand
+- the `help` subcommand and no arguments after that
+
+> See "Subcommand descriptions" for instructions on how to set help text for your subcommands.
 
 ## Creating subcommands
 

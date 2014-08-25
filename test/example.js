@@ -32,6 +32,12 @@ describe('example', function() {
         .code(0)
         .run('', done);
     });
+    it('works as a subcommand', function(done) {
+      example
+        .stdout(fixture('help.txt'))
+        .code(0)
+        .run('help', done);
+    });
     it('runs the subcommand help', function(done) {
       example
         .stdout(fixture('exec.txt'))

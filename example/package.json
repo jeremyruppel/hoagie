@@ -8,7 +8,7 @@
   "subcommands": {
     "bash": "test that bash scripts run",
     "env": "print environment variables",
-    "subcommand": "run a subcommand"
+    "exec": "run a subcommand"
   },
   "author": "Jeremy Ruppel",
   "license": "ISC",

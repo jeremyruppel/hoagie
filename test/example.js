@@ -36,21 +36,26 @@ describe('example', function() {
       example
         .stdout(fixture('exec.txt'))
         .code(0)
-        .run('subcommand --help', done);
+        .run('exec --help', done);
     });
     it('delegates to subcommands help', function(done) {
       example
         .stdout(fixture('exec.txt'))
         .code(0)
-        .run('help subcommand', done);
+        .run('help exec', done);
     });
   });
   describe('exec', function() {
     it('executes a subcommand', function(done) {
+      var args = [
+        'node',
+        process.cwd() + '/example/hoagie-exec',
+        'arg'
+      ];
       example
-        .stdout('OHAI!')
+        .stdout(JSON.stringify(args))
         .code(0)
-        .run('subcommand ohai', done);
+        .run('exec arg', done);
     });
     it('executes the file in its own environment', function(done) {
       example

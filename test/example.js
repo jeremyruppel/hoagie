@@ -34,13 +34,13 @@ describe('example', function() {
     });
     it('runs the subcommand help', function(done) {
       example
-        .stdout(fixture('subcommand.txt'))
+        .stdout(fixture('exec.txt'))
         .code(0)
         .run('subcommand --help', done);
     });
     it('delegates to subcommands help', function(done) {
       example
-        .stdout(fixture('subcommand.txt'))
+        .stdout(fixture('exec.txt'))
         .code(0)
         .run('help subcommand', done);
     });

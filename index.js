@@ -36,7 +36,7 @@ module.exports = function(package) {
     process.stdin.pipe(cp.stdin);
     cp.stdout.pipe(process.stdout);
     cp.stderr.pipe(process.stderr);
-    cp.on('exit', function(code /*, signal */) {
+    cp.on('close', function(code /*, signal */) {
       process.exit(code);
     });
   }

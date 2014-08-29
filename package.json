@@ -14,7 +14,8 @@
     "line",
     "subcommand",
     "sub",
-    "argv"
+    "argv",
+    "stream"
   ],
   "author": "Jeremy Ruppel",
   "repository": {

@@ -20,7 +20,17 @@ var suggest = require('./lib/suggest');
  *
  */
 module.exports = function(package) {
+
+  /**
+   * `req` is the current program's invocation. This contains
+   * the information from the package.json as well as the
+   * parsed arguments, subcommand, etc.
+   */
   var req = request(package);
+
+  /**
+   * The list of standard hoagie "middleware".
+   */
   var cli = [
     version, // print version information
     help,    // print program help

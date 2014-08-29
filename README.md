@@ -1,23 +1,15 @@
 # hoagie
 
+[Sub][1]-like organization for command-line applications.
+
 > [![NPM version][npm-badge]][npm]
 > [![Build Status][travis-badge]][travis-ci]
 
-**hoagie** provides a nice way to organize your command-line applications into subcommands. Hoagie leverages node and npm to greatly simplify the creation of git-style subcommand apps, like 37signals' [sub][1]. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
+**hoagie** provides a simple way to organize your command-line applications into subcommands. It also provides `--version` output, global `--help` text and subcommand suggestions out of the box.
 
-**Features:**
+**hoagie** leverages node and npm to greatly simplify the creation of git-style subcommand apps. It is language-agnostic and does not parse arguments for you, so you can write your subcommands in whatever language you want.
 
-- [x] language agnostic
-- [x] argv parser agnostic
-- [x] find commands in `PATH`
-- [x] list subcommands
-- [x] help command
-- [x] version command
-- [x] colors!
-- [x] suggest commands like git
-- [ ] man pages support?
-- [ ] rc file support?
-- [ ] subcommand completion?
+When **hoagie** handles your program's invocation, it uses a simple async routine to determine what to do, then streams output thereafter. Hoagie's goal is to be as fast as possible while still remaining robust.
 
 ## Install
 
@@ -28,19 +20,35 @@
 Inside your `index.js` (or whatever your `$npm_package_main` is), simply require hoagie and give it your *parsed* package.json.
 
 ``` js
-// index.js
 require('hoagie')(require('./package'));
 ```
 
 Your application's package.json is expected to have the following properties:
 
 - `name` - your application's name.
+- `version` - your application's version.
 - `description` - a short description of your application.
 - `subcommands` - short descriptions of known subcommands.
+
+You probably already have the first three defined if you're writing a node module. So for example:
+
+``` json
+{
+	"name": "foo",
+	"description": "An example app",
+	"version": "1.2.3",
+	"subcommands": {
+		"bar": "This command does something",
+		"baz": "This command does something entirely different"
+	}
+}
+```
 
 ### version
 
 **hoagie** supports the `--version` flag out of the box and will print your program's version according to the `version` key in your package.json.
+
+`$ foo --version`
 
 ### help
 
@@ -50,7 +58,7 @@ Your application's package.json is expected to have the following properties:
 - the `--help` flag and no subcommand
 - the `help` subcommand and no arguments after that
 
-> See "Subcommand descriptions" for instructions on how to set help text for your subcommands.
+> See [Subcommand descriptions](#subcommand-descriptions) for instructions on how to set help text for your subcommands.
 
 ## Creating subcommands
 
@@ -66,13 +74,13 @@ Your application's package.json is expected to have the following properties:
 
 ### Subcommand help
 
-Subcommands are expected to handle the `--help` flag. When a user runs `calc help foo`, **hoagie** will invoke `calc foo --help` so that your program can display whatever help text you'd like.
+Subcommands are expected to handle the `--help` flag. When a user runs `calc help foo`, **hoagie** will invoke `calc foo --help` so that your program can display whatever detailed help text you'd like.
 
 ## License
 
 [ISC License][LICENSE]
 
-[1]: https://github.com/basecamp/sub
+[1]: https://github.com/basecamp/sub "basecamp/sub"
 [npm]: http://badge.fury.io/js/hoagie
 [npm-badge]: https://badge.fury.io/js/hoagie.svg
 [travis-ci]: https://travis-ci.org/jeremyruppel/hoagie

@@ -1,4 +1,4 @@
-var hoagie = require(__dirname);
+var hoagie = require('..');
 var assert = require('assert');
 
 /* jshint mocha:true */

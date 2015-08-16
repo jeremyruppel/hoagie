@@ -27,5 +27,7 @@
     "jshint": "^2.8.0",
     "mocha": "^2.2.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "merge-descriptors": "^1.0.0"
+  }
 }

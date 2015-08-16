@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-
-if (process.argv[2] == '--help') {
-  return console.log('this is the subcommand help');
-}
-console.log('%j', process.argv);

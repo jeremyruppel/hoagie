@@ -1,5 +1,9 @@
 module.exports = function hoagie() {
-  /*
-    TODO
-  */
+  function app(/* req, res, next */) {
+    /*
+      TODO
+    */
+  }
+
+  return app;
 };

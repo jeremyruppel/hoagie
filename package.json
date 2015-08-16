@@ -23,6 +23,9 @@
     "url": "git@github.com:jeremyruppel/hoagie.git"
   },
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5"
+  },
   "dependencies": {}
 }

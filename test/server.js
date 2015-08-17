@@ -29,16 +29,6 @@ describe('server', function() {
       done();
     });
   });
-  it('parses the command line options', function(done) {
-    hoagie.createServer(function(req /*, res */) {
-      assert.equal(req.argv._[0], 'foo');
-      assert.equal(req.argv._[1], 'bar');
-      assert.equal(req.argv.baz, 'yay');
-      done();
-    }).run([
-      'foo', 'bar', '--baz', 'yay'
-    ]);
-  });
   it('sets the exit code', function(done) {
     hoagie.createServer(function(req, res) {
       res.exitCode = 1;

@@ -16,10 +16,12 @@ exports = module.exports = function hoagie() {
 
   app.set = function(key, val) {
     this.settings[key] = val;
+    return this;
   };
 
   app.use = function() {
     router.use.apply(router, arguments);
+    return this;
   };
 
   app.handle = function(req, res, done) {

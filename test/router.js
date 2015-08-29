@@ -5,34 +5,28 @@ var assert = require('assert');
 
 describe('router', function() {
   it('runs middleware that match the command', function(done) {
-    var app = hoagie();
-
-    app.use('foo', function() {
+    hoagie().use('foo', function() {
       done(new Error('Middleware should not have been called'));
-    });
-    app.use('bar', function() {
+    }).use('bar', function() {
       done();
-    });
-
-    app.run(['bar']);
+    }).run([
+      'bar'
+    ]);
   });
   it('runs all middleware that match the command', function(done) {
-    var app = hoagie();
     var arr = [];
 
-    app.use('foo', function(/* req, res, next */) {
+    hoagie().use('foo', function(/* req, res, next */) {
       done(new Error('Middleware should not have been called'));
-    });
-    app.use('bar', function(req, res, next) {
+    }).use('bar', function(req, res, next) {
       arr.push('bar 1');
       next();
-    });
-    app.use('bar', function(req, res, next) {
+    }).use('bar', function(req, res, next) {
       arr.push('bar 2');
       next();
-    });
-
-    app.run(['bar']).on('finish', function() {
+    }).run([
+      'bar'
+    ]).on('finish', function() {
       assert.deepEqual(arr, ['bar 1', 'bar 2']);
       done();
     });

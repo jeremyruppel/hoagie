@@ -16,6 +16,9 @@ describe('app.settings', function() {
     app.set('foo', 'bar');
     assert.equal(app.settings.foo, 'bar');
   });
+  it('returns itself from #set', function() {
+    assert.equal(app.set('foo', 'bar').get('foo'), 'bar');
+  });
   it('gets a setting', function() {
     app.settings.foo = 'bar';
     assert.equal(app.get('foo'), 'bar');

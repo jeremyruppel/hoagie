@@ -16,8 +16,8 @@ exports = module.exports = function hoagie() {
     router.handle(req, res, done);
   };
 
-  app.run = function(argv) {
-    return hoagie.createServer(app).run(argv);
+  app.run = function(argv, stdout) {
+    return hoagie.createServer(app).run(argv, stdout);
   };
 
   return app;

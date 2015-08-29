@@ -32,7 +32,7 @@ describe('router', function() {
       next();
     });
 
-    app.run(['bar']).on('end', function() {
+    app.run(['bar']).on('finish', function() {
       assert.deepEqual(arr, ['bar 1', 'bar 2']);
       done();
     });

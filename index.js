@@ -38,3 +38,5 @@ exports = module.exports = function hoagie() {
 exports.createServer = function(handler) {
   return server(handler);
 };
+
+exports.Router = Router;

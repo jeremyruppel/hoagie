@@ -31,4 +31,17 @@ describe('router', function() {
       done();
     });
   });
+  it('can be mounted', function(done) {
+    var app = hoagie();
+    var rtr = hoagie.Router();
+
+    rtr.use('foo', function(req /*, res */) {
+      assert.equal(req.params[0], 'foo');
+      done();
+    });
+
+    app.use(rtr).run([
+      'foo'
+    ]);
+  });
 });

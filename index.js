@@ -8,6 +8,16 @@ exports = module.exports = function hoagie() {
     app.handle(req, res, next);
   }
 
+  app.settings = {};
+
+  app.get = function(key) {
+    return this.settings[key];
+  };
+
+  app.set = function(key, val) {
+    this.settings[key] = val;
+  };
+
   app.use = function() {
     router.use.apply(router, arguments);
   };

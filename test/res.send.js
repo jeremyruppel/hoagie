@@ -13,7 +13,7 @@ describe('res.send', function() {
       res.send('OK');
     });
 
-    app.run([], stdout).on('finish', function() {
+    app.run([], null, stdout).on('finish', function() {
       assert.equal(stdout.data, 'OK\n');
       done();
     });

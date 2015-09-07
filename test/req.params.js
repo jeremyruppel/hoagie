@@ -4,6 +4,16 @@ var assert = require('assert');
 /* jshint mocha:true */
 
 describe('req.params', function() {
+  it('is an array', function(done) {
+    var app = hoagie();
+
+    app.use(function(req /*, res, next */) {
+      assert(Array.isArray(req.params));
+      done();
+    });
+
+    app.run([]);
+  });
   it('provides named params from flags', function(done) {
     var app = hoagie();
 

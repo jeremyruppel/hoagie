@@ -1,13 +1,16 @@
-# Settings
+excludeInFolderSearch = "{$excludeInFolderSearch,node_modules}"
+
+excludeInFileChooser = "{$excludeInFileChooser,node_modules}"
+
+include = "{$include,.jshintrc}"
+include = "{$include,.jshintignore}"
+include = "{$include,.gitignore}"
+
 softWrap = false
 softTabs = true
 tabSize  = 2
-include  = "{$include,.jscsrc,.jshintrc,.jshintignore,.gitignore,.travis.yml}"
 
 [ text.html.markdown ]
 softWrap = true
 softTabs = false
 tabSize  = 2
-
-[ .jscsrc ]
-fileType = "source.json"

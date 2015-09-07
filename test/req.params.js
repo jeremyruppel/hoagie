@@ -27,23 +27,10 @@ describe('req.params', function() {
       '--foo', 'bar', '--baz=yay', 'woot'
     ]);
   });
-  it('provides named params from the spec', function(done) {
-    var app = hoagie();
-
-    app.use('foo <bar> <baz>', function(req /*, res, next */) {
-      assert.equal(req.params.bar, 'omg');
-      assert.equal(req.params.baz, 'yay');
-      done();
-    });
-
-    app.run([
-      'foo', '--woot=true', 'omg', 'yay'
-    ]);
-  });
   it('provides ordinal params', function(done) {
     var app = hoagie();
 
-    app.use('foo <bar> <baz>', function(req /*, res, next */) {
+    app.use('foo', function(req /*, res, next */) {
       assert.equal(req.params[0], 'foo');
       assert.equal(req.params[1], 'omg');
       assert.equal(req.params[2], 'yay');

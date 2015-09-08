@@ -39,4 +39,14 @@ exports.createServer = function(handler) {
   return server(handler);
 };
 
+/**
+ * Router
+ */
+
 exports.Router = Router;
+
+/**
+ * Middleware
+ */
+
+exports.help = require('./lib/middleware/help');

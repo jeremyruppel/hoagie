@@ -9,9 +9,6 @@ describe('app.settings', function() {
   beforeEach(function() {
     app = hoagie();
   });
-  it('is an object', function() {
-    assert.deepEqual(app.settings, {});
-  });
   it('sets a setting', function() {
     app.set('foo', 'bar');
     assert.equal(app.settings.foo, 'bar');

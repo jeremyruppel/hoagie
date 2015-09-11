@@ -1,14 +1,22 @@
 var server = require('./lib/server');
 var Router = require('./lib/router');
+var path = require('path');
 
 exports = module.exports = function hoagie() {
-  var router = new Router;
 
   function app(req, res, next) {
     app.handle(req, res, next);
   }
 
   app.settings = {};
+
+  app.init = function() {
+    this._router = new Router();
+
+    this.set('program', path.basename(process.argv[1]));
+
+    return this;
+  };
 
   app.get = function(key) {
     return this.settings[key];
@@ -20,17 +28,19 @@ exports = module.exports = function hoagie() {
   };
 
   app.use = function() {
-    router.use.apply(router, arguments);
+    this._router.use.apply(this._router, arguments);
     return this;
   };
 
   app.handle = function(req, res, done) {
-    router.handle(req, res, done);
+    this._router.handle(req, res, done);
   };
 
   app.run = function(argv, stdin, stdout) {
     return hoagie.createServer(app).run(argv, stdin, stdout);
   };
+
+  app.init();
 
   return app;
 };

@@ -4,17 +4,19 @@ var stdio = require('./support');
 
 /* jshint mocha:true */
 
-describe('res.send', function() {
-  it('writes to process.stdout and ends', function(done) {
+describe('res.writeln', function() {
+  it('writes to process.stdout with a newline', function(done) {
     var stdout = new stdio.Output();
     var app = hoagie();
 
     app.use(function(req, res) {
-      res.send('OK');
+      res.writeln('foo');
+      res.writeln('bar');
+      res.end('baz');
     });
 
     app.run([], null, stdout).on('finish', function() {
-      assert.equal(stdout.data, 'OK\n');
+      assert.equal(stdout.data, 'foo\nbar\nbaz');
       done();
     });
   });

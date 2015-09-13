@@ -1,6 +1,6 @@
 var server = require('./lib/server');
-var Router = require('./lib/router');
-var path = require('path');
+var proto = require('./lib/application');
+var mixin = require('merge-descriptors');
 
 exports = module.exports = function hoagie() {
 
@@ -8,39 +8,13 @@ exports = module.exports = function hoagie() {
     app.handle(req, res, next);
   }
 
-  app.settings = {};
+  mixin(app, proto, false);
 
-  app.init = function() {
-    this._router = new Router();
-
-    this.set('program', path.basename(process.argv[1]));
-
-    return this;
-  };
-
-  app.get = function(key) {
-    return this.settings[key];
-  };
-
-  app.set = function(key, val) {
-    this.settings[key] = val;
-    return this;
-  };
-
-  app.use = function() {
-    this._router.use.apply(this._router, arguments);
-    return this;
-  };
-
-  app.handle = function(req, res, done) {
-    this._router.handle(req, res, done);
-  };
+  app.init();
 
   app.run = function(argv, stdin, stdout) {
     return hoagie.createServer(app).run(argv, stdin, stdout);
   };
-
-  app.init();
 
   return app;
 };
@@ -53,7 +27,7 @@ exports.createServer = function(handler) {
  * Router
  */
 
-exports.Router = Router;
+exports.Router = require('./lib/router');
 
 /**
  * Middleware

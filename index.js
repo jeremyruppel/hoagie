@@ -1,4 +1,4 @@
-var server = require('./lib/server');
+var Server = require('./lib/server');
 var proto = require('./lib/application');
 var mixin = require('merge-descriptors');
 
@@ -33,7 +33,7 @@ exports = module.exports = function hoagie() {
  */
 
 exports.createServer = function(handler) {
-  return server(handler);
+  return new Server(handler);
 };
 
 /**

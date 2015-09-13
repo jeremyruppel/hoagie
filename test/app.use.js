@@ -87,6 +87,10 @@ describe('app.use', function() {
   it('adds an error handler with a subcommand', function(done) {
     var app = hoagie();
 
+    app.use('bar', function(err, req, res, next) { // jshint ignore:line
+      done(new Error('Wrong subcommand!'));
+    });
+
     app.use('foo', function(err, req, res, next) { // jshint ignore:line
       assert.equal(err.message, 'boom');
       done();

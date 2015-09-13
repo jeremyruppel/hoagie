@@ -11,7 +11,30 @@
 
 ## Usage
 
-**TODO**
+``` js
+// math.js
+
+var hoagie = require('hoagie');
+
+var app = hoagie();
+
+app.use('add', function(req, res, next) {
+	var a = parseInt(req.params[1], 10);
+	var b = parseInt(req.params[2], 10);
+
+	res.send(a + b);
+});
+
+app.run(process.argv.slice(2));
+
+```
+
+``` bash
+$ node ./math.js add 1 1
+2
+```
+
+See the `examples` directory for more code samples.
 
 ## License
 

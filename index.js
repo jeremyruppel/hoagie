@@ -2,6 +2,11 @@ var server = require('./lib/server');
 var proto = require('./lib/application');
 var mixin = require('merge-descriptors');
 
+/**
+ * Creates a new hoagie application.
+ * @returns {Object}
+ */
+
 exports = module.exports = function hoagie() {
 
   function app(req, res, next) {
@@ -18,6 +23,14 @@ exports = module.exports = function hoagie() {
 
   return app;
 };
+
+/**
+ * Creates a new hoagie server with `handler` as the request
+ * handler. Applications are essentially complex `handler`
+ * functions.
+ * @param {Function} handler
+ * @returns {Object}
+ */
 
 exports.createServer = function(handler) {
   return server(handler);

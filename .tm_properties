@@ -5,6 +5,7 @@ excludeInFileChooser = "{$excludeInFileChooser,node_modules}"
 include = "{$include,.jshintrc}"
 include = "{$include,.jshintignore}"
 include = "{$include,.gitignore}"
+include = "{$include,.travis.yml}"
 
 softWrap = false
 softTabs = true

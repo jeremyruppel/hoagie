@@ -7,7 +7,9 @@
 
 ## Install
 
-`$ npm install hoagie --save`
+``` bash
+$ npm install hoagie --save
+```
 
 ## Usage
 
@@ -36,6 +38,10 @@ $ node ./math.js add 1 1
 
 See the `examples` directory for more code samples.
 
+## Middleware
+
+- [hoagie-session][hoagie-session] adds "session" support
+
 ## License
 
 [ISC License][LICENSE]
@@ -46,3 +52,4 @@ See the `examples` directory for more code samples.
 [travis-ci]: https://travis-ci.org/jeremyruppel/hoagie
 [travis-badge]: https://travis-ci.org/jeremyruppel/hoagie.svg?branch=master
 [LICENSE]: https://github.com/jeremyruppel/hoagie/blob/master/LICENSE
+[hoagie-session]: https://github.com/jeremyruppel/hoagie-session

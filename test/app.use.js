@@ -148,5 +148,23 @@ describe('app.use', function() {
       'foo', 'bar', 'baz'
     ]);
   });
-  it('propagates errors to the super app');
+  it('propagates errors to the super app', function(done) {
+    var app = hoagie();
+    var sub = hoagie();
+
+    app.use(function(err, req, res, next) { // jshint ignore:line
+      assert.equal(err.message, 'boom');
+      done();
+    });
+
+    sub.use('bar', function(req , res, next) {
+      next(new Error('boom'));
+    });
+
+    app.use('foo', sub);
+
+    app.run([
+      'foo', 'bar'
+    ]);
+  });
 });

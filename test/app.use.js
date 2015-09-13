@@ -171,4 +171,36 @@ describe('app.use', function() {
       'foo', 'bar'
     ]);
   });
+  it('handles thrown errors inside middleware', function(done) {
+    var app = hoagie();
+
+    app.use(function(/* req, res, next */){
+      throw new Error('boom');
+    });
+
+    app.use(function(err, req, res, next){ // jshint ignore:line
+      assert.equal(err.message, 'boom');
+      done();
+    });
+
+    app.run([]);
+  });
+  it('handles thrown errors inside error handlers', function(done) {
+    var app = hoagie();
+
+    app.use(function(req, res, next){
+      setImmediate(next, new Error('boom'));
+    });
+
+    app.use(function(err, req, res, next) { // jshint ignore:line
+      throw err;
+    });
+
+    app.use(function(err, req, res, next){ // jshint ignore:line
+      assert.equal(err.message, 'boom');
+      done();
+    });
+
+    app.run([]);
+  });
 });

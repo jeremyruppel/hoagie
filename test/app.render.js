@@ -22,6 +22,6 @@ describe('app.render', function() {
 
     assert.throws(function() {
       app.render(__dirname + '/fixtures/error.txt', {});
-    }, /Unexpected token !/);
+    }, /Cannot read property 'bar' of undefined/);
   });
 });

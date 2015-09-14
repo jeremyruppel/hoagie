@@ -1,1 +1,1 @@
-This is illegal javascript: {{boom!}}
+This should blow up: {{foo.bar.baz}}

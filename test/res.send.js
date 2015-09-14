@@ -1,21 +1,16 @@
 var hoagie = require('..');
-var assert = require('assert');
-var stdio = require('./support');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
 describe('res.send', function() {
   it('writes to process.stdout and ends', function(done) {
-    var stdout = new stdio.Output();
     var app = hoagie();
 
     app.use(function(req, res) {
       res.send('OK');
     });
 
-    app.run([], null, stdout).on('finish', function() {
-      assert.equal(stdout.data, 'OK\n');
-      done();
-    });
+    invoke(app).run([]).expect('OK\n', done);
   });
 });

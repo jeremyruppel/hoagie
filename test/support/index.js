@@ -24,6 +24,7 @@ exports.Output = require('./output');
 
 function Test(app) {
   this._app    = app;
+  this._tests  = [];
   this._stdin  = new exports.Input;
   this._stdout = new exports.Output;
 }
@@ -60,21 +61,41 @@ Test.prototype.run = function(argv) {
  */
 
 Test.prototype.expect = function(output, done) {
+  switch (output.constructor) {
+  case String:
+    this._tests.push(function string(result) {
+      assert.equal(result, output);
+    });
+    break;
+  case RegExp:
+    this._tests.push(function regexp(result) {
+      assert(output.test(result), 'Expected ' + result + ' to match ' + output);
+    });
+    break;
+  }
+
+  if (done) {
+    return this.end(done);
+  } else {
+    return this;
+  }
+};
+
+Test.prototype.end = function(done) {
   var app    = this._app;
   var argv   = this._argv;
+  var tests  = this._tests;
   var stdin  = this._stdin;
   var stdout = this._stdout;
 
   app.run(argv, stdin, stdout).on('finish', function() {
     try {
-      assert.equal(stdout.data, output);
+      tests.forEach(function(test) {
+        test(stdout.data);
+      });
     } catch (err) {
       return done(err);
     }
     done();
   });
-};
-
-Test.prototype.end = function() {
-  this._app.run(this._argv, this._stdin, this._stdout);
 };

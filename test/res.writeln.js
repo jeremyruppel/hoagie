@@ -15,4 +15,16 @@ describe('res.writeln', function() {
 
     invoke(app).run([]).expect('foo\nbar\nbaz', done);
   });
+  it('formats if arguments are provided', function(done) {
+    var app = hoagie();
+
+    app.use(function(req, res) {
+      res.writeln('current status: %s', req.params.status);
+      res.end();
+    });
+
+    invoke(app)
+    .run([ '--status', 'beer' ])
+    .expect('current status: beer\n', done);
+  });
 });

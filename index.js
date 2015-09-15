@@ -15,6 +15,8 @@ exports = module.exports = function hoagie() {
 
   mixin(app, proto, false);
 
+  app.request = { app: app, __proto__: hoagie.Request.prototype };
+  app.response = { app: app, __proto__: hoagie.Response.prototype };
   app.init();
 
   app.run = function(argv, stdin, stdout) {
@@ -41,6 +43,8 @@ exports.createServer = function(handler) {
  */
 
 exports.Router = require('./lib/router');
+exports.Request = require('./lib/request');
+exports.Response = require('./lib/response');
 
 /**
  * Middleware

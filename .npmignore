@@ -1,0 +1,11 @@
+# Development
+.jshintignore
+.jshintrc
+.npmignore
+.tm_properties
+.travis.yml
+Makefile
+hook.sh
+
+# Tests
+test/

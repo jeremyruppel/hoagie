@@ -51,3 +51,4 @@ exports.Response = require('./lib/response');
  */
 
 exports.help = require('./lib/middleware/help');
+exports.completion = require('./lib/middleware/completion');

@@ -33,4 +33,13 @@ describe('server', function() {
       done();
     });
   });
+  it('emits the "finish" event', function(done) {
+    hoagie.createServer(function(req, res) {
+      res.exitCode = 1;
+      res.end();
+    }).run([]).on('finish', function(code) {
+      assert.equal(code, 1);
+      done();
+    });
+  });
 });

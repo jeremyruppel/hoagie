@@ -1,5 +1,6 @@
 var hoagie = require('..');
 var assert = require('assert');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
@@ -15,30 +16,26 @@ describe('router', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'bar'
-    ]);
+    ]).end(function() {});
   });
   it('runs all middleware that match the command', function(done) {
     var app = hoagie();
-    var arr = [];
 
     app.use('foo', function(/* req, res, next */) {
       done(new Error('Middleware should not have been called'));
     });
 
     app.use('bar', function(req, res, next) {
-      arr.push('bar 1');
+      res.write('a');
       next();
     }, function(req, res, next) {
-      arr.push('bar 2');
+      res.write('b');
       next();
     });
 
-    app.run([ 'bar' ]).on('finish', function() {
-      assert.deepEqual(arr, ['bar 1', 'bar 2']);
-      done();
-    });
+    invoke(app).run([ 'bar' ]).expect('ab', done);
   });
   it('can be mounted', function(done) {
     var app = hoagie();
@@ -49,8 +46,10 @@ describe('router', function() {
       done();
     });
 
-    app.use(rtr).run([
+    app.use(rtr);
+
+    invoke(app).run([
       'foo'
-    ]);
+    ]).end(function() {});
   });
 });

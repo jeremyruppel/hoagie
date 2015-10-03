@@ -1,5 +1,6 @@
 var hoagie = require('..');
 var assert = require('assert');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
@@ -12,7 +13,7 @@ describe('req.params', function() {
       done();
     });
 
-    app.run([]);
+    invoke(app).run([]).end(function() {});
   });
   it('provides named params from flags', function(done) {
     var app = hoagie();
@@ -23,9 +24,9 @@ describe('req.params', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       '--foo', 'bar', '--baz=yay', 'woot'
-    ]);
+    ]).end(function() {});
   });
   it('provides ordinal params', function(done) {
     var app = hoagie();
@@ -37,8 +38,8 @@ describe('req.params', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'foo', '--woot=true', 'omg', 'yay'
-    ]);
+    ]).end(function() {});
   });
 });

@@ -1,5 +1,6 @@
 var hoagie = require('..');
 var assert = require('assert');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
@@ -17,8 +18,8 @@ describe('middleware/init', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'help', 'bar'
-    ]);
+    ]).end(function() {});
   });
 });

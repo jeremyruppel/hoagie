@@ -1,5 +1,6 @@
 var hoagie = require('..');
 var assert = require('assert');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
@@ -11,7 +12,7 @@ describe('app.use', function() {
       done();
     });
 
-    app.run([]);
+    invoke(app).run([]).end(function() {});
   });
   it('adds an error handler', function(done) {
     var app = hoagie();
@@ -25,7 +26,7 @@ describe('app.use', function() {
       next(new Error('boom'));
     });
 
-    app.run([]);
+    invoke(app).run([]).end(function() {});
   });
   it('adds multiple middleware', function(done) {
     var app = hoagie();
@@ -46,7 +47,7 @@ describe('app.use', function() {
       done();
     });
 
-    app.run([]);
+    invoke(app).run([]).end(function() {});
   });
   it('adds multiple error handlers', function(done) {
     var app = hoagie();
@@ -71,7 +72,7 @@ describe('app.use', function() {
       next(new Error('boom'));
     });
 
-    app.run([]);
+    invoke(app).run([]).end(function() {});
   });
   it('adds a middleware with a subcommand', function(done) {
     var app = hoagie();
@@ -80,9 +81,9 @@ describe('app.use', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'foo'
-    ]);
+    ]).end(function() {});
   });
   it('adds an error handler with a subcommand', function(done) {
     var app = hoagie();
@@ -100,9 +101,9 @@ describe('app.use', function() {
       next(new Error('boom'));
     });
 
-    app.run([
+    invoke(app).run([
       'foo'
-    ]);
+    ]).end(function() {});
   });
   it('mounts a sub-app', function(done) {
     var app = hoagie();
@@ -116,9 +117,9 @@ describe('app.use', function() {
 
     app.use(sub);
 
-    app.run([
+    invoke(app).run([
       'foo', 'bar', 'baz'
-    ]);
+    ]).end(function() {});
   });
   it('mounts a sub-app under a command', function(done) {
     var app = hoagie();
@@ -132,9 +133,9 @@ describe('app.use', function() {
 
     app.use('foo', sub);
 
-    app.run([
+    invoke(app).run([
       'foo', 'bar', 'baz'
-    ]);
+    ]).end(function() {});
   });
   it('restores the params after a sub-app', function(done) {
     var app = hoagie();
@@ -148,9 +149,9 @@ describe('app.use', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'foo', 'bar', 'baz'
-    ]);
+    ]).end(function() {});
   });
   it('propagates errors to the super app', function(done) {
     var app = hoagie();
@@ -167,8 +168,8 @@ describe('app.use', function() {
 
     app.use('foo', sub);
 
-    app.run([
+    invoke(app).run([
       'foo', 'bar'
-    ]);
+    ]).end(function() {});
   });
 });

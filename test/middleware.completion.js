@@ -12,9 +12,9 @@ describe('middleware/completion', function() {
       done();
     });
 
-    app.run([
+    invoke(app).run([
       'foo', '--commands'
-    ]);
+    ]).end(function() {});
   });
   it('lists the available commands', function(done) {
     var app = hoagie();

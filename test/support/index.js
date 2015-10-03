@@ -1,4 +1,5 @@
 var assert = require('assert');
+var hoagie = require('../..');
 
 /**
  * Returns a new Test instance for `app`.
@@ -88,7 +89,7 @@ Test.prototype.end = function(done) {
   var stdin  = this._stdin;
   var stdout = this._stdout;
 
-  app.run(argv, stdin, stdout).on('finish', function() {
+  hoagie.createServer(app).run(argv, stdin, stdout).on('finish', function() {
     try {
       tests.forEach(function(test) {
         test(stdout.data);

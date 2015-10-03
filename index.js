@@ -19,8 +19,8 @@ exports = module.exports = function hoagie() {
   app.response = { app: app, __proto__: hoagie.Response.prototype };
   app.init();
 
-  app.run = function(argv, stdin, stdout) {
-    return hoagie.createServer(app).run(argv, stdin, stdout);
+  app.run = function(argv) {
+    return hoagie.createServer(app).run(argv, process.stdin, process.stdout);
   };
 
   return app;

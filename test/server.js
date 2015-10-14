@@ -22,6 +22,12 @@ describe('server', function() {
       done();
     });
   });
+  it('adds argv to req', function(done) {
+    hoagie.createServer(function(req /*, res */) {
+      assert.deepEqual(req.argv, [ 'foo', 'bar' ]);
+      done();
+    }).run([ 'foo', 'bar' ]);
+  });
   it('sets the exit code', function(done) {
     hoagie.createServer(function(req, res) {
       res.exitCode = 1;

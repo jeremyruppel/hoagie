@@ -15,8 +15,8 @@ exports = module.exports = function invoke(app) {
  * Expose stdio helpers
  */
 
-exports.Input = require('./input');
-exports.Output = require('./output');
+exports.stdin = require('./stdin');
+exports.stdout = require('./stdout');
 
 /**
  * supertest-style test helper for hoagie applications.
@@ -26,8 +26,8 @@ exports.Output = require('./output');
 function Test(app) {
   this._app    = app;
   this._tests  = [];
-  this._stdin  = new exports.Input();
-  this._stdout = new exports.Output();
+  this._stdin  = exports.stdin();
+  this._stdout = exports.stdout();
 }
 
 Test.prototype = {};

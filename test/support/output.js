@@ -10,13 +10,16 @@ function Output() {
   stream.Writable.call(this);
 
   this.data = '';
+
+  this._write = function(chunk, encoding, callback) {
+    this.data += String(chunk);
+    callback();
+    /*
+      TODO why does process.nextTick(callback) not work?
+    */
+  };
 }
 
 util.inherits(Output, stream.Writable);
-
-Output.prototype._write = function(chunk, encoding, callback) {
-  this.data += String(chunk);
-  process.nextTick(callback);
-};
 
 module.exports = Output;

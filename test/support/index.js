@@ -26,8 +26,8 @@ exports.Output = require('./output');
 function Test(app) {
   this._app    = app;
   this._tests  = [];
-  this._stdin  = new exports.Input;
-  this._stdout = new exports.Output;
+  this._stdin  = new exports.Input();
+  this._stdout = new exports.Output();
 }
 
 Test.prototype = {};

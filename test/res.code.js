@@ -9,7 +9,7 @@ describe('res.code', function() {
     var app = hoagie();
 
     app.use(function(req, res) {
-      assert.equal(res.exitCode, 0);
+      assert.equal(res.exitCode, undefined);
       res.code(128);
       assert.equal(res.exitCode, 128);
       done();

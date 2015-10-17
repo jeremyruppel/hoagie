@@ -47,6 +47,11 @@ describe('middleware/completion', function() {
   it('prints the completion script for /bin/bash', function(done) {
     var app = hoagie();
 
+    // fake like we're not a tty for this test
+    app.response.__defineGetter__('isTTY', function() {
+      return false;
+    });
+
     app.set('program', 'hoagie');
     app.use(hoagie.completion());
 

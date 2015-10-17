@@ -16,7 +16,7 @@ exports = module.exports = function hoagie() {
   mixin(app, proto, false);
 
   app.request = { app: app, __proto__: hoagie.Request };
-  app.response = { app: app, __proto__: hoagie.Response.prototype };
+  app.response = { app: app, __proto__: hoagie.Response };
   app.init();
 
   app.run = function(argv) {

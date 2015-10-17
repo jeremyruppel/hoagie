@@ -39,7 +39,7 @@ Test.prototype = {};
  */
 
 Test.prototype.stdin = function(chunk) {
-  this._stdin = new exports.Input(chunk);
+  this._stdin.push(chunk);
   return this;
 };
 

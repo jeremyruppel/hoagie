@@ -1,5 +1,6 @@
 var hoagie = require('..');
 var assert = require('assert');
+var invoke = require('./support');
 
 /* jshint mocha:true */
 
@@ -13,12 +14,12 @@ describe('server', function() {
       assert.equal(res.writable, true);
       done();
     });
-    server.run([]);
+    server.run([], new invoke.Input());
   });
   it('emits the "start" event', function(done) {
     hoagie.createServer(function(req, res) {
       res.end();
-    }).run([]).on('start', function() {
+    }).run([], new invoke.Input()).on('start', function() {
       done();
     });
   });
@@ -26,13 +27,13 @@ describe('server', function() {
     hoagie.createServer(function(req /*, res */) {
       assert.deepEqual(req.argv, [ 'foo', 'bar' ]);
       done();
-    }).run([ 'foo', 'bar' ]);
+    }).run([ 'foo', 'bar' ], new invoke.Input());
   });
   it('sets the exit code', function(done) {
     hoagie.createServer(function(req, res) {
       res.exitCode = 1;
       res.end();
-    }).run([]).on('start', function() {
+    }).run([], new invoke.Input()).on('start', function() {
       assert.equal(process.exitCode, 0);
     }).on('finish', function() {
       assert.equal(process.exitCode, 1);
@@ -43,7 +44,7 @@ describe('server', function() {
     hoagie.createServer(function(req, res) {
       res.exitCode = 1;
       res.end();
-    }).run([]).on('finish', function(code) {
+    }).run([], new invoke.Input()).on('finish', function(code) {
       assert.equal(code, 1);
       done();
     });

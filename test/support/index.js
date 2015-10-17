@@ -89,7 +89,7 @@ Test.prototype.end = function(done) {
   var stdin  = this._stdin;
   var stdout = this._stdout;
 
-  hoagie.createServer(app).run(argv, stdin, stdout).on('finish', function() {
+  hoagie.createServer(app).run(argv, stdin, stdout).on('exit', function() {
     try {
       tests.forEach(function(test) {
         test(stdout.data);

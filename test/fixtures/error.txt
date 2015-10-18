@@ -1,1 +1,1 @@
-This should blow up: {{foo.bar.baz}}
+This should blow up: <%= foo.bar.baz %>

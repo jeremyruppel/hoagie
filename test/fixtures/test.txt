@@ -1,1 +1,1 @@
-Hello from {{settings.program}}!
+Hello from <%= settings.program %>!

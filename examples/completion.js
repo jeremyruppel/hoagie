@@ -78,4 +78,4 @@ function translate(words) {
   };
 }
 
-app.run(process.argv.slice(2));
+app.run(hoagie.argv);

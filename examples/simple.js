@@ -48,4 +48,4 @@ function reverse(str) {
 }
 
 // run the app
-app.run(process.argv.slice(2));
+app.run(hoagie.argv);

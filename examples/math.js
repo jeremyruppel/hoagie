@@ -18,4 +18,4 @@ app.use('add', function(req, res) {
 	res.send(a + b);
 });
 
-app.run(process.argv.slice(2));
+app.run(hoagie.argv);

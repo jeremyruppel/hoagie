@@ -29,6 +29,16 @@ exports = module.exports = function hoagie() {
 };
 
 /**
+ * Alias for `process.argv.slice(2)`, which is the
+ * argument vector minus the environment and program.
+ * @returns {Array}
+ */
+
+exports.__defineGetter__('argv', function() {
+  return process.argv.slice(2);
+});
+
+/**
  * Creates a new hoagie server with `handler` as the request
  * handler. Applications are essentially complex `handler`
  * functions.

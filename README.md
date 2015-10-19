@@ -27,7 +27,7 @@ app.use('add', function(req, res, next) {
 	res.send(a + b);
 });
 
-app.run(process.argv.slice(2));
+app.run(hoagie.argv);
 ```
 
 ``` bash

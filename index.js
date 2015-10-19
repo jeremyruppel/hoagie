@@ -1,5 +1,7 @@
 var Server = require('./lib/server');
 var proto = require('./lib/application');
+var req = require('./lib/request');
+var res = require('./lib/response');
 var mixin = require('merge-descriptors');
 
 /**
@@ -15,8 +17,8 @@ exports = module.exports = function hoagie() {
 
   mixin(app, proto, false);
 
-  app.request = { app: app, __proto__: hoagie.Request };
-  app.response = { app: app, __proto__: hoagie.Response };
+  app.request = { app: app, __proto__: req };
+  app.response = { app: app, __proto__: res };
   app.init();
 
   app.run = function(argv) {
@@ -43,8 +45,8 @@ exports.createServer = function(handler) {
  */
 
 exports.Router = require('./lib/router');
-exports.Request = require('./lib/request');
-exports.Response = require('./lib/response');
+exports.request = req;
+exports.response = res;
 
 /**
  * Middleware

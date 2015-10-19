@@ -5,8 +5,8 @@ var invoke = require('./support');
 /* jshint mocha:true */
 
 describe('app.request', function() {
-  it('exposes the request class', function() {
-    assert.ok(hoagie.Request);
+  it('exposes the request prototype', function() {
+    assert.ok(hoagie.request);
   });
   it('extends the request prototype', function(done) {
     var app = hoagie();

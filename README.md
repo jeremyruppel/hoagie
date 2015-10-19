@@ -37,9 +37,14 @@ $ node ./math.js add 1 1
 
 See the `examples` directory for more code samples.
 
+### app.use([command, ]fn...)
+
+Adds each middleware function to the stack, optionally under the `command` space. Each middleware should be a function of the signature `function(req, res, next)`.
+
 ## Middleware
 
 - [hoagie-session][hoagie-session] adds "session" support
+- [hoagie-exec][hoagie-exec] Make your hoagie program exec to another process
 
 ## License
 
@@ -52,3 +57,4 @@ See the `examples` directory for more code samples.
 [travis-badge]: https://travis-ci.org/jeremyruppel/hoagie.svg?branch=master
 [LICENSE]: https://github.com/jeremyruppel/hoagie/blob/master/LICENSE
 [hoagie-session]: https://github.com/jeremyruppel/hoagie-session
+[hoagie-exec]: https://github.com/jeremyruppel/hoagie-exec

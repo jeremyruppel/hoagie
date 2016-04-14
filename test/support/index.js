@@ -63,6 +63,11 @@ Test.prototype.run = function(argv) {
 
 Test.prototype.expect = function(output, done) {
   switch (output.constructor) {
+  case Number:
+    this._tests.push(function number(result, code) {
+      assert.equal(code, output);
+    });
+    break;
   case String:
     this._tests.push(function string(result) {
       assert.equal(result, output);
@@ -89,10 +94,10 @@ Test.prototype.end = function(done) {
   var stdin  = this._stdin;
   var stdout = this._stdout;
 
-  hoagie.createServer(app).run(argv, stdin, stdout).on('exit', function() {
+  hoagie.createServer(app).run(argv, stdin, stdout).on('exit', function(code) {
     try {
       tests.forEach(function(test) {
-        test(stdout.data);
+        test(stdout.data, code);
       });
     } catch (err) {
       return done(err);

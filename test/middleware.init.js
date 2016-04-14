@@ -22,4 +22,14 @@ describe('middleware/init', function() {
       'help', 'bar'
     ]).end(function() {});
   });
+  it('sets res.exitCode', function(done) {
+    var app = hoagie();
+
+    app.use(function(req, res /*, next */) {
+      assert.equal(res.exitCode, 0);
+      done();
+    });
+
+    invoke(app).run([]).end(function() {});
+  });
 });

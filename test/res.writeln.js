@@ -15,6 +15,17 @@ describe('res.writeln', function() {
 
     invoke(app).run([]).expect('foo\nbar\nbaz', done);
   });
+  it('writes a single newline if no arguments are provided', function(done) {
+    var app = hoagie();
+
+    app.use(function(req, res) {
+      res.write('foo');
+      res.writeln();
+      res.end('bar');
+    });
+
+    invoke(app).run([]).expect('foo\nbar', done);
+  });
   it('formats if arguments are provided', function(done) {
     var app = hoagie();
 
